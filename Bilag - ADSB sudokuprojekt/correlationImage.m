@@ -47,18 +47,19 @@ end
 %Her tjekkes for 1 & 3 blev forvekslet med 4 eller 8 (eulers metode)
 for i = 1:81
     if (value(i) == 4)
-       temp = bweuler(boundImage{i,1},4);
-       if (temp == 0)
+       temp = bweuler(imcomplement(boundImage{i,1}(5:35,5:35)),8);
+       if (temp == 1)
                value(i) = 1;
-       elseif (temp == 1)
+       end
+       if (temp == 0)
                value(i) = 4;
        end
     end
-    if (value(i) == 8)
-       temp = bweuler(boundImage{i,1},4);
-       if (temp == 0)
+    if (value(i) == 8 )
+       temp = bweuler(imcomplement(boundImage{i,1}(5:35,5:35)),8);
+       if (temp == 1)
                value(i) = 3;
-       elseif (temp == 2)
+       elseif (temp == -1)
                value(i) = 8;
        end
     end    
